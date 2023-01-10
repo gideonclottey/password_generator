@@ -95,22 +95,19 @@ let checkUpperCase;
 let checkLowerCase;
 let checkSpecialCharacters;
 
+lenght_password = prompt("How many characters will your password contain?");
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-  let lenght_password = prompt(
-    "How many characters will your password contain?"
-  );
-
   // check if the input is within limit
 
   while (lenght_password <= 10 || lenght_password >= 64) {
     alert("Password length must be between 11 and 63, kindly try again");
-    let lenght_password = prompt(
-      "How many characters will your password contain?"
-    );
+    lenght_password = prompt("How many characters will your password contain?");
   }
 }
 
+getPasswordOptions();
 // Function for getting a random element from an array
 function getRandom(arr) {}
 // Repeat the combination of charactors the user needs
@@ -138,16 +135,16 @@ while (
   checkNumericCharacters === false
 ) {
   alert("You must choose at least one parameter");
-  var confirmSpecialCharacter = confirm(
+  checkSpecialCharacters = confirm(
     "Click OK to confirm if you would like to include special characters"
   );
-  var confirmNumericCharacter = confirm(
+  checkNumericCharacters = confirm(
     "Click OK to confirm if you would like to include numeric characters"
   );
-  var confirmLowerCase = confirm(
+  checkLowerCase = confirm(
     "Click OK to confirm if you would like to include lowercase characters"
   );
-  var confirmUpperCase = confirm(
+  checkUpperCase = confirm(
     "Click OK to confirm if you would like to include uppercase characters"
   );
 }
@@ -155,26 +152,36 @@ while (
 // Assign an action to the password parameters NEED TO FIX THIS
 var passwordCharacters = [];
 
-if (confirmSpecialCharacter) {
-  passwordCharacters = passwordCharacters.concat(specialChar);
-}
-
-if (confirmNumericCharacter) {
-  passwordCharacters = passwordCharacters.concat(number);
-}
-
-if (confirmLowerCase) {
-  passwordCharacters = passwordCharacters.concat(alphaLower);
-}
-
-if (confirmUpperCase) {
-  passwordCharacters = passwordCharacters.concat(alphaUpper);
-}
-
-console.log(passwordCharacters);
-
 // Function to generate password with user input
-function generatePassword() {}
+function generatePassword() {
+  if (checkSpecialCharacters) {
+    passwordCharacters = passwordCharacters.concat(specialCharacters);
+  }
+
+  if (checkNumericCharacters) {
+    passwordCharacters = passwordCharacters.concat(numericCharacters);
+  }
+
+  if (checkLowerCase) {
+    passwordCharacters = passwordCharacters.concat(lowerCasedCharacters);
+  }
+
+  if (checkUpperCase) {
+    passwordCharacters = passwordCharacters.concat(upperCasedCharacters);
+  }
+
+  console.log(passwordCharacters);
+
+  var randomPassword = "";
+
+  for (var i = 0; i < lenght_password; i++) {
+    randomPassword =
+      randomPassword +
+      passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+    console.log(randomPassword);
+  }
+  return randomPassword;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");

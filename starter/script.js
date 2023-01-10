@@ -113,6 +113,65 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {}
+// Repeat the combination of charactors the user needs
+
+alert("You will have" + lenght_password + " charactors");
+
+checkSpecialCharacters = confirm(
+  "Click OK to confirm if you would like to include special characters"
+);
+checkNumericCharacters = confirm(
+  "Click OK to confirm if you would like to include numeric characters"
+);
+checkLowerCase = confirm(
+  "Click OK to confirm if you would like to include lowercase characters"
+);
+checkUpperCase = confirm(
+  "Click OK to confirm if you would like to include uppercase characters"
+);
+
+// Loop if answer is outside the parameters
+while (
+  checkUpperCase === false &&
+  checkLowerCase === false &&
+  checkSpecialCharacters === false &&
+  checkNumericCharacters === false
+) {
+  alert("You must choose at least one parameter");
+  var confirmSpecialCharacter = confirm(
+    "Click OK to confirm if you would like to include special characters"
+  );
+  var confirmNumericCharacter = confirm(
+    "Click OK to confirm if you would like to include numeric characters"
+  );
+  var confirmLowerCase = confirm(
+    "Click OK to confirm if you would like to include lowercase characters"
+  );
+  var confirmUpperCase = confirm(
+    "Click OK to confirm if you would like to include uppercase characters"
+  );
+}
+
+// Assign an action to the password parameters NEED TO FIX THIS
+var passwordCharacters = [];
+
+if (confirmSpecialCharacter) {
+  passwordCharacters = passwordCharacters.concat(specialChar);
+}
+
+if (confirmNumericCharacter) {
+  passwordCharacters = passwordCharacters.concat(number);
+}
+
+if (confirmLowerCase) {
+  passwordCharacters = passwordCharacters.concat(alphaLower);
+}
+
+if (confirmUpperCase) {
+  passwordCharacters = passwordCharacters.concat(alphaUpper);
+}
+
+console.log(passwordCharacters);
 
 // Function to generate password with user input
 function generatePassword() {}
